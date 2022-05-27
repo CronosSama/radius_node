@@ -1,0 +1,40 @@
+version: '3'
+services:
+  react-app:
+    restart: always
+    networks:
+      - react_network
+    build: 
+      context: $PWD/client/
+      dockerfile: $PWD/Docker/DockerFiles/Dockerfile.react
+    environment:
+      - PORT=3000
+    command: npm start
+
+  express-app:
+    restart: always
+    networks:
+      - react_network
+    #the path where the DockerFile
+    build: 
+      context: $PWD/server/
+      dockerfile: $PWD/Docker/DockerFiles/Dockerfile.express
+    environment:
+      - PORT=3001
+      
+  # nginx:
+  #   container_name: nginx
+  #   restart: always
+  #   networks:
+  #     - express_network
+  #     - react_network
+  #   image: nginx:alpine
+  #   volumes:
+  #     - $PWD/nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+
+networks:
+  react_network:
+  # express_network:
+
+    

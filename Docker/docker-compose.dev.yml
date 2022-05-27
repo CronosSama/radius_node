@@ -1,0 +1,20 @@
+version: '3'
+services:
+  # nginx:
+  #   ports:
+  #     - "8080:80"
+  
+  react-app:
+    volumes:
+      - $PWD/client:/app/client:ro
+    ports:
+      - "8080:3000"
+
+  express-app:
+    build:
+      args:
+        - NODE_ENV=DEV
+    volumes:
+      -  $PWD/server:/app/server:ro
+    command: npm start
+    

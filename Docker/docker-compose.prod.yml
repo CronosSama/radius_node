@@ -1,0 +1,8 @@
+version: '3'
+services:
+  express-app:
+    build:
+      args:
+        - NODE_ENV=PROD
+    command: node index.js
+

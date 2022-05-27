@@ -1,12 +1,12 @@
 import axios from "axios"
 
-export const uri_user = 'http://localhost:3001/api/auth'
+export const uri_user = 'http://express-app:3001/api/auth'
 
 // export const fetchPosts = () => axios.get(url)
 
 export const caller = async(method,path,payload=null) => {
   try{
-
+    console.log("we here and the link is ")
     const { data } = await axios[method](path,payload)
     return data
   }catch(error){
